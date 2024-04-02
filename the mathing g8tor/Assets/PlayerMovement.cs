@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         float dirX = Input.GetAxisRaw("Horizontal");
-        player.velocity = new Vector2(dirX * 2.5f, player.velocity.y);
+        player.velocity = new Vector2(dirX * 7f, player.velocity.y);
 
         //Jump this is checked for every frame
         if (Input.GetButtonDown("Jump"))
         {
-            player.velocity = new Vector2(player.velocity.x, 5);
+            player.velocity = new Vector2(player.velocity.x, 14);
         }
     }
 }
