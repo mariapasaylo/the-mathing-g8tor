@@ -24,5 +24,16 @@ public class PlayerMovement : MonoBehaviour
         {
             player.velocity = new Vector2(player.velocity.x, 14);
         }
+
+     
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "VOID")
+        {
+            // Starting position of player character
+            player.position = new Vector2(-13,-2);
+        }    
     }
 }
