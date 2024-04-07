@@ -24,5 +24,13 @@ public class PlayerMovement : MonoBehaviour
         {
             player.velocity = new Vector2(player.velocity.x, 5);
         }
+
+        //When character is running
+        if (dirX > 0f)
+        {//MARIA start here
+
+        }
+
+
     }
 }
