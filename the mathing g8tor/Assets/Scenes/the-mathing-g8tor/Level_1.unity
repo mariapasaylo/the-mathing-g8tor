@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &19836632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19836633}
+  - component: {fileID: 19836634}
+  m_Layer: 0
+  m_Name: DataPersistenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19836633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19836632}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.7129488, y: -2.3490753, z: 0.045153618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1454659747}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &19836634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19836632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2e346caf305154b9666bbe0f922c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: data.game
 --- !u!1 &32241167
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32241168}
   m_Layer: 0
-  m_Name: Batteries
+  m_Name: Energy Cells
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,8 +192,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32241167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.283004, y: 7.129362, z: 4.2914176}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -166,7 +211,7 @@ Transform:
   - {fileID: 1827557400}
   - {fileID: 818388880}
   - {fileID: 1656871955}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1903212993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &37537753
 GameObject:
@@ -760,7 +805,7 @@ GameObject:
   - component: {fileID: 427017177}
   - component: {fileID: 427017176}
   m_Layer: 0
-  m_Name: Battery_4
+  m_Name: EnergyCell_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +1005,7 @@ GameObject:
   - component: {fileID: 806653451}
   - component: {fileID: 806653450}
   m_Layer: 0
-  m_Name: Battery_3
+  m_Name: EnergyCell_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1136,7 +1181,7 @@ GameObject:
   - component: {fileID: 818388880}
   - component: {fileID: 818388879}
   m_Layer: 0
-  m_Name: Battery_7
+  m_Name: EnergyCell_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1265,7 @@ GameObject:
   - component: {fileID: 874730531}
   - component: {fileID: 874730530}
   m_Layer: 0
-  m_Name: Battery_2
+  m_Name: EnergyCell_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5503,7 +5548,7 @@ GameObject:
   - component: {fileID: 931040937}
   - component: {fileID: 931040936}
   m_Layer: 0
-  m_Name: Battery_5
+  m_Name: EnergyCell_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5672,7 +5717,7 @@ GameObject:
   - component: {fileID: 994659370}
   - component: {fileID: 994659372}
   m_Layer: 0
-  m_Name: Battery_1
+  m_Name: EnergyCell_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5814,8 +5859,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046000764}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.283004, y: 7.129362, z: 4.2914176}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5825,7 +5870,7 @@ Transform:
   - {fileID: 116998364}
   - {fileID: 1640497090}
   - {fileID: 1124521535}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1903212993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104256071
 GameObject:
@@ -6177,6 +6222,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1886753599}
+  - {fileID: 19836633}
   - {fileID: 811793418}
   - {fileID: 1119738361}
   m_Father: {fileID: 0}
@@ -6937,6 +6983,8 @@ Transform:
   m_Children:
   - {fileID: 367363391}
   - {fileID: 107659269}
+  - {fileID: 32241168}
+  - {fileID: 1046000765}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963366796
@@ -7219,7 +7267,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -7256,7 +7304,7 @@ GameObject:
   - component: {fileID: 2007616598}
   - component: {fileID: 2007616597}
   m_Layer: 0
-  m_Name: Battery_6
+  m_Name: EnergyCell_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7421,5 +7469,3 @@ SceneRoots:
   - {fileID: 1454659747}
   - {fileID: 758440493}
   - {fileID: 1903212993}
-  - {fileID: 32241168}
-  - {fileID: 1046000765}

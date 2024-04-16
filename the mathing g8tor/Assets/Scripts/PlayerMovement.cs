@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D player;
     public SpriteRenderer spriteRenderer;
@@ -61,4 +61,20 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+
+    // Load player position from saved game data
+    public void LoadData(GameData data)
+    {
+        // Move the player to the last saved location
+        this.transform.position = data.position;
+    }
+
+    // Save player position to game data
+    public void SaveData(ref GameData data)
+    {
+        // save the player's current location
+        data.position = this.transform.position;
+    }
 }
+
+
