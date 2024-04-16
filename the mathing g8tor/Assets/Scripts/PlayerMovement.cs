@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     private Rigidbody2D player;
     public SpriteRenderer spriteRenderer;
     public Sprite[] spriteArray;
+    private Animator anim;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,16 +25,17 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
         //Jump this is checked for every frame
         if (Input.GetButtonDown("Jump"))
-        {
+        { //Adjust the strenght of the jump
             player.velocity = new Vector2(player.velocity.x, 14);
         }
 
+        //Up and down movement
         if (player.velocity.y < 0)
         {
             spriteRenderer.sprite = spriteArray[2];
         }
         else
-        {
+        {  //Left and right movement
             if (player.velocity.x >= 0)
             {
                 spriteRenderer.sprite = spriteArray[0];
@@ -43,7 +45,22 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
                 spriteRenderer.sprite = spriteArray[1];
             }
         }
-     
+
+        //running and idle animations
+        if (dirX > 0f) //right
+        {
+            anim.SetBool("running", true);
+        } else if (dirX < 0f) //left
+        {
+            anim.SetBool("running", true);
+        } else //idle
+        {
+            anim.SetBool("running", false);
+
+        } 
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
