@@ -9,18 +9,20 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public SpriteRenderer spriteRenderer;
     public Sprite[] spriteArray;
     private Animator anim;
+    private float dirX;
 
     // Start is called before the first frame update
     private void Start()
     {
         player = GetComponent<Rigidbody2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        float dirX = Input.GetAxisRaw("Horizontal");
+        dirX = Input.GetAxisRaw("Horizontal");
         player.velocity = new Vector2(dirX * 7f, player.velocity.y);
 
         //Jump this is checked for every frame
@@ -46,20 +48,28 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
             }
         }
 
+        UpdateAnimation();
+
+    }
+
+    private void UpdateAnimation()
+    {
         //running and idle animations
         if (dirX > 0f) //right
         {
             anim.SetBool("running", true);
-        } else if (dirX < 0f) //left
+            spriteRenderer.flipX = false;
+        }
+        else if (dirX < 0f) //left
         {
             anim.SetBool("running", true);
-        } else //idle
+            spriteRenderer.flipX = true;
+        }
+        else //idle
         {
             anim.SetBool("running", false);
 
-        } 
-
-
+        }
 
     }
 
