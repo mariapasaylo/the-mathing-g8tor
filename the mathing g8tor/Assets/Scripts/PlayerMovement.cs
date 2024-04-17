@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,18 +7,22 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D player;
+    private BoxCollider2D boxCollider;
     public SpriteRenderer spriteRenderer;
     public Sprite[] spriteArray;
     private Animator anim;
     private float dirX;
-    private float dirY;
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float jumpForce = 16f;
+    [SerializeField] private LayerMask jumpableGround;
+
+    private enum MovementState {idle, running, jumping, falling}
 
     // Start is called before the first frame update
     private void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
@@ -29,7 +34,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
 
         //Jump this is checked for every frame
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         { //Adjust the strenght of the jump
             player.velocity = new Vector2(player.velocity.x, jumpForce);
         }
@@ -57,23 +62,40 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 
     private void UpdateAnimationState()
     {
+        MovementState state;
         //running and idle animations
         if (dirX > 0f) //right
         {
-            anim.SetBool("running", true);
+            state = MovementState.running;
             spriteRenderer.flipX = false;
         }
         else if (dirX < 0f) //left
         {
-            anim.SetBool("running", true);
+            state = MovementState.running;
             spriteRenderer.flipX = true;
         }
         else //idle
         {
-            anim.SetBool("running", false);
-
+            state = MovementState.idle;
         }
 
+        //do not do if else because you don't want idle and running to occur at the same time as jump and fall
+        //Jumping animation
+        if (player.velocity.y > .1f) //check for upward velocity. It is not exactly zero when you are not applying any force
+        {
+            state = MovementState.jumping;
+        }else if (player.velocity.y < -.1f) { //check for downward velocity
+            state = MovementState.falling;
+        }
+
+        anim.SetInteger("state", (int)state);
+
+    }
+
+    private bool IsGrounded() 
+    {   //This function is meant to stop us from jumping an unlimited number of times
+        //Checks if you are overlapping with jumpable ground
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
