@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     public Sprite[] spriteArray;
     private Animator anim;
     private float dirX;
+    private float dirY;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float jumpForce = 14f;
 
     // Start is called before the first frame update
     private void Start()
@@ -23,12 +26,12 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     private void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
-        player.velocity = new Vector2(dirX * 7f, player.velocity.y);
+        player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
 
         //Jump this is checked for every frame
         if (Input.GetButtonDown("Jump"))
         { //Adjust the strenght of the jump
-            player.velocity = new Vector2(player.velocity.x, 14);
+            player.velocity = new Vector2(player.velocity.x, jumpForce);
         }
 
         //Up and down movement
@@ -48,11 +51,11 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
             }
         }
 
-        UpdateAnimation();
+        UpdateAnimationState();
 
     }
 
-    private void UpdateAnimation()
+    private void UpdateAnimationState()
     {
         //running and idle animations
         if (dirX > 0f) //right
