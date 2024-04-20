@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - VOID
+  - Battery
   layers:
   - Default
   - TransparentFX
