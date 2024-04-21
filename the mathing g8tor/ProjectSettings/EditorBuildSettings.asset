@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/the-mathing-g8tor/Start_Screen.unity
+    guid: ec84010f4e965d34a92ded740f2af927
+  - enabled: 1
+    path: Assets/Scenes/the-mathing-g8tor/Level_1.unity
+    guid: 370f0c0613af0f34984d15838f58a54a
   m_configObjects: {}
