@@ -523,6 +523,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba1e9b3f9734aa4f912a7372b79b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  friends:
+  - friendName: Friend1
+    requiredEnergy: 4
+    isFreed: 0
+    friendSpriteObject: {fileID: 554665550}
+  - friendName: Friend2
+    requiredEnergy: 8
+    isFreed: 0
+    friendSpriteObject: {fileID: 1104256071}
+  - friendName: Friend3
+    requiredEnergy: 2
+    isFreed: 0
+    friendSpriteObject: {fileID: 1640497088}
   energyCellText: {fileID: 2055029531}
 --- !u!1 &116998362
 GameObject:
@@ -1198,7 +1211,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.011891663, y: -0.10894954}
@@ -6100,7 +6113,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.034638405, y: -0.20205921}
@@ -6664,7 +6677,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.011546135, y: -0.21937859}
