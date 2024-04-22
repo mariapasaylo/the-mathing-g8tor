@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 554665553}
   m_Layer: 0
   m_Name: Friend_1
-  m_TagString: Untagged
+  m_TagString: Friend1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5999,7 +5999,7 @@ GameObject:
   - component: {fileID: 1104256074}
   m_Layer: 0
   m_Name: Friend_2
-  m_TagString: Untagged
+  m_TagString: Friend2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6563,7 +6563,7 @@ GameObject:
   - component: {fileID: 1640497091}
   m_Layer: 0
   m_Name: Friend_3
-  m_TagString: Untagged
+  m_TagString: Friend3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

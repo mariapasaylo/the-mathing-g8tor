@@ -11,6 +11,9 @@ TagManager:
   - Battery5
   - Battery7
   - Battery9
+  - Friend1
+  - Friend2
+  - Friend3
   layers:
   - Default
   - TransparentFX
