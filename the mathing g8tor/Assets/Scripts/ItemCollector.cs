@@ -18,6 +18,8 @@ public class ItemCollector : MonoBehaviour
     [System.Serializable] 
     public class Friend
     {
+        public Transform doorLocation; // Transform component indicating where the door is located
+
         public string friendName;
         public int requiredEnergy;
         public bool isFreed = false;
@@ -58,25 +60,45 @@ public class ItemCollector : MonoBehaviour
         //*********************************************** ADD THIS ***********************************************//
         if (!isBattery) {
             foreach (var friend in friends)
+        {
+            if (collision.gameObject == friend.friendSpriteObject && !friend.isFreed)
             {
-                if (collision.gameObject == friend.friendSpriteObject && !friend.isFreed)
+                if (currentTotalEnergy == friend.requiredEnergy)
                 {
-                    if (currentTotalEnergy == friend.requiredEnergy)
-                    {
-                        friend.isFreed = true;
-                        Destroy(collision.gameObject);
-                        //collision.gameObject.SetActive(false); // Consider animating this instead per Maria's suggestion
-                        Debug.Log(friend.friendName + " is freed!"); // Maybe we could put this in the UI as a message
-                        currentTotalEnergy = 0;
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough energy to free " + friend.friendName); // Maybe we could put this in the UI as a message
-                    }
+                    friend.isFreed = true;
+                    StartCoroutine(MoveToDoor(friend.friendSpriteObject, friend.doorLocation.position));
+                }
+
+                else if (currentTotalEnergy > friend.requiredEnergy)
+                {
+                Debug.Log("Too much energy collected. All energy lost!");
+                currentTotalEnergy = 0; 
+                energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; 
+                }
+                else
+                {
+                    Debug.Log("Not enough energy to free " + friend.friendName);
                 }
             }
         }
+        }
         //*********************************************** END OF ADDITION ***********************************************//
+    }
+
+    IEnumerator MoveToDoor(GameObject friendObject, Vector3 doorPosition)
+    {
+        float speed = 2f; // Speed at which the friend moves towards the door
+        while (Vector3.Distance(friendObject.transform.position, doorPosition) > 0.1f)
+        {
+            // Move the friend towards the door location
+            friendObject.transform.position = Vector3.MoveTowards(friendObject.transform.position, doorPosition, speed * Time.deltaTime);
+            yield return null; // Wait until next frame
+        }
+
+        // Once the friend reaches the door, deactivate or destroy the object
+        Destroy(friendObject); // or use friendObject.SetActive(false);
+        currentTotalEnergy = 0;
+        energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }
 }
     
