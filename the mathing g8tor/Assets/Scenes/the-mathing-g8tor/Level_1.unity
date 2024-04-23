@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 554665552}
   - component: {fileID: 554665551}
   - component: {fileID: 554665553}
+  - component: {fileID: 554665554}
   m_Layer: 0
   m_Name: Friend_1
   m_TagString: Friend1
@@ -1404,6 +1405,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4055065, y: 1.7821009}
   m_EdgeRadius: 0
+--- !u!95 &554665554
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554665550}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4c4daff5d530f84ea01a9bb64764e19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &661340218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6098,6 +6120,7 @@ GameObject:
   - component: {fileID: 1104256073}
   - component: {fileID: 1104256072}
   - component: {fileID: 1104256074}
+  - component: {fileID: 1104256075}
   m_Layer: 0
   m_Name: Friend_2
   m_TagString: Friend2
@@ -6218,6 +6241,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3995953, y: 1.5958816}
   m_EdgeRadius: 0
+--- !u!95 &1104256075
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104256071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e4b2688da4640b4ea4202df9fc7706a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1119738358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6500,6 +6544,7 @@ GameObject:
   - component: {fileID: 1640497090}
   - component: {fileID: 1640497089}
   - component: {fileID: 1640497091}
+  - component: {fileID: 1640497092}
   m_Layer: 0
   m_Name: Friend_3
   m_TagString: Friend3
@@ -6620,6 +6665,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3534107, y: 1.5612428}
   m_EdgeRadius: 0
+--- !u!95 &1640497092
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640497088}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96168a270ee31b642ba780b316d65dc0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1656871953
 GameObject:
   m_ObjectHideFlags: 0
