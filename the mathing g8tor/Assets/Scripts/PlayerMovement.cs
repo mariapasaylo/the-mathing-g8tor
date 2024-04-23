@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         GlobalVariables.friendCount = 3;
-        GlobalVariables.previousFriendCount = 3;
 
     }
 
@@ -61,23 +60,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         }
        
         UpdateAnimationState();
-        Relight(); //BACKLOG
-
-
-        /*BACKLOG
-         Debug.Log("MARIA friend count" + GlobalVariables.friendCount);
-        Debug.Log("MARIA previous friend count" + GlobalVariables.previousFriendCount);
-        if (GlobalVariables.previousFriendCount > GlobalVariables.friendCount)
-        {
-            Relight();
-            GlobalVariables.previousFriendCount = GlobalVariables.friendCount;
-            Debug.Log("INSIDE friend count" + GlobalVariables.friendCount);
-            Debug.Log("INSIDE friend count" + GlobalVariables.previousFriendCount);
-        }*/
-         
-
-
-
+ 
     }
 
     private void UpdateAnimationState()
@@ -134,17 +117,6 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         }
     }
     
-    
-    private void Relight()
-    {
-        foreach (var battery in GlobalVariables.batteryValues)
-        {
-            if (!gameObject.activeSelf)
-            {
-                gameObject.SetActive(true);
-            }
-        }
-    }
 
     // Load player position from saved game data
     public void LoadData(GameData data)

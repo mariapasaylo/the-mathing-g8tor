@@ -13,6 +13,5 @@ public static class GlobalVariables
     };
 
     public static int friendCount; 
-    public static int previousFriendCount;
 
 }

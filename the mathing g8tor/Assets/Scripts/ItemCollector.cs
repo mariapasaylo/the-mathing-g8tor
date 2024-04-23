@@ -15,7 +15,6 @@ public class ItemCollector : MonoBehaviour
     //*********************************************** ADD THIS ***********************************************//
     // This attribute makes the list visible in the Unity Editor
     [SerializeField] private List<Friend> friends = new List<Friend>(); // List of friends
-    //public int friendCount = 3; //BACKLOG figure out how to not hard code this value
 
     // This makes the struct visible in the Unity Editor
     [System.Serializable]
@@ -35,37 +34,21 @@ public class ItemCollector : MonoBehaviour
     [SerializeField] private TextMeshProUGUI energyCellText;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*
-        BACKLOG make thias a serialized field
-        var batteryValues = new Dictionary<string, int>() {
-            {"Battery1",1 },
-            {"Battery3",3 },
-            {"Battery5",5 },
-            {"Battery7",7 },
-            {"Battery9",9 }
-        };
-        */
-        //*********************************************** ADD THIS ***********************************************//
+
         bool isBattery = false;
-        //*********************************************** END OF ADDITION ***********************************************//
         
         foreach (var battery in GlobalVariables.batteryValues) {
            
             if (collision.gameObject.CompareTag(battery.Key))
             {
-                //Destroy(collision.gameObject); //BACKLOG instead of destroy animate to shut flame off and relight after one friend goes to portal
-                (collision.gameObject).SetActive(false); //BACKLOG THIS IS FOR RESPAWNING
                 currentTotalEnergy = currentTotalEnergy + GlobalVariables.batteryValues[battery.Key];
                 Debug.Log(GlobalVariables.batteryValues[battery.Key]);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
-                //*********************************************** ADD THIS ***********************************************//
                 isBattery = true; // Mark as battery to avoid friend check
                 break; // Exit loop once battery is found and processed
-                //*********************************************** END OF ADDITION ***********************************************//
             }
         }
 
-        //*********************************************** ADD THIS ***********************************************//
         if (!isBattery) {
             foreach (var friend in friends)
             {
@@ -90,7 +73,6 @@ public class ItemCollector : MonoBehaviour
                 }
             }
         }
-        //*********************************************** END OF ADDITION ***********************************************//
 
 
         if (collision.gameObject.CompareTag("Portal")){
@@ -111,7 +93,6 @@ public class ItemCollector : MonoBehaviour
 
         // Once the friend reaches the door, deactivate or destroy the object
         Destroy(friendObject); // or use friendObject.SetActive(false);
-        GlobalVariables.previousFriendCount = GlobalVariables.friendCount;
         GlobalVariables.friendCount = GlobalVariables.friendCount - 1;
         Debug.Log("Friends still not freed:" + GlobalVariables.friendCount);
         currentTotalEnergy = 0;
