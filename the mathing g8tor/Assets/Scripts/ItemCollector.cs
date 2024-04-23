@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class ItemCollector : MonoBehaviour
 {
     private int currentTotalEnergy = 0;
-    private static Dictionary<string, int> batteryValues = new Dictionary<string, int>() {
+    private Dictionary<string, int> batteryValues = new Dictionary<string, int>() {
         {"Battery1", 1},
         {"Battery3", 3},
         {"Battery5", 5},
@@ -18,7 +18,6 @@ public class ItemCollector : MonoBehaviour
     }; 
     private static int friendCount = 3; //MARIA figure out a way to not hardcode this
 
-    //*********************************************** ADD THIS ***********************************************//
     // This attribute makes the list visible in the Unity Editor
     [SerializeField] private List<Friend> friends = new List<Friend>(); // List of friends
 
@@ -33,11 +32,11 @@ public class ItemCollector : MonoBehaviour
         public bool isFreed = false;
         public GameObject friendSpriteObject; // This will hold the reference to which friend, friend1, friend2, friend3
     }
-    //*********************************************** END OF ADDITION ***********************************************//
-    
-
+   
 
     [SerializeField] private TextMeshProUGUI energyCellText;
+    [SerializeField] private TextMeshProUGUI instructionsText;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -48,7 +47,7 @@ public class ItemCollector : MonoBehaviour
             if (collision.gameObject.CompareTag(battery.Key))
             {
                 FindObjectOfType<AudioManager>().Play("CollectObject");
-                currentTotalEnergy = currentTotalEnergy + batteryValues[battery.Key];
+                currentTotalEnergy += batteryValues[battery.Key];
                 Debug.Log(batteryValues[battery.Key]);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
                 isBattery = true; // Mark as battery to avoid friend check
@@ -71,11 +70,13 @@ public class ItemCollector : MonoBehaviour
                     {
                     Debug.Log("Too much energy collected. All energy lost!");
                     currentTotalEnergy = 0; 
-                    energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; 
+                    energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
+                    //instructionsText.text = "Too much energy collected. All energy lost!";
                     }
                     else
                     {
                         Debug.Log("Not enough energy to free your friend, " + friend.friendName + ". Collect more energy!");
+                        instructionsText.text = "Not enough energy";
                     }
                 }
             }
