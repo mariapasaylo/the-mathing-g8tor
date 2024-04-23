@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq; // Aids in finding the data persistence of objects
 
+
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
@@ -65,10 +66,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.LoadData(gameData);
         }
-
-        // for debugging if needed ...
-        //Debug.Log("Loaded score = " + gameData.score);
-
     }
 
     public void SaveGame()
@@ -79,8 +76,6 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.SaveData(ref gameData);
         }
 
-        // for debugging if needed ...
-        //Debug.Log("Saved score = " + gameData.score);
 
         // Save that data to a file using the data handler
         dataHandler.Save(gameData);
