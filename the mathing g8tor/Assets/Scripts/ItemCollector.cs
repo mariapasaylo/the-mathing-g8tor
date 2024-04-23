@@ -83,7 +83,7 @@ public class ItemCollector : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Portal")){
             if (friendCount == 0) {
-                Debug.Log("Hurrah! Great job, G8tor! All of your friends are home!");
+                Debug.Log("Hurrah! LEVEL 1 Compeleted! Go G8tors!");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
@@ -108,6 +108,10 @@ public class ItemCollector : MonoBehaviour
         Destroy(friendObject); // or use friendObject.SetActive(false);
         friendCount = friendCount - 1;
         Debug.Log("Number of friends that still need to get home:" + friendCount);
+        if (friendCount == 0)
+        {
+            Debug.Log("Great job, G8tor! Go to the portal home!");
+        }
         currentTotalEnergy = 0;
         energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }
