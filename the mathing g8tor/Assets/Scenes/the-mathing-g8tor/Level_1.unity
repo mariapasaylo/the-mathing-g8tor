@@ -520,17 +520,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friends:
   - doorLocation: {fileID: 485087690}
-    friendName: Friend1
+    friendName: Chompers
     requiredEnergy: 4
     isFreed: 0
     friendSpriteObject: {fileID: 554665550}
   - doorLocation: {fileID: 485087690}
-    friendName: Friend2
+    friendName: Snapster
     requiredEnergy: 8
     isFreed: 0
     friendSpriteObject: {fileID: 1104256071}
   - doorLocation: {fileID: 485087690}
-    friendName: Friend3
+    friendName: Swampy
     requiredEnergy: 2
     isFreed: 0
     friendSpriteObject: {fileID: 1640497088}

@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 public class ItemCollector : MonoBehaviour
 {
     private int currentTotalEnergy = 0;
-    private Animator animCollectible;
-    private enum energyState { off, on }
 
     //*********************************************** ADD THIS ***********************************************//
     // This attribute makes the list visible in the Unity Editor
@@ -68,7 +66,7 @@ public class ItemCollector : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Not enough energy to free your friend. Collect more energy!" + friend.friendName);
+                        Debug.Log("Not enough energy to free your friend, " + friend.friendName + ". Collect more energy!");
                     }
                 }
             }
