@@ -16,7 +16,7 @@ public class ItemCollector : MonoBehaviour
         {"Battery7", 7},
         {"Battery9", 9}
     }; 
-    private static int friendCount = 3; //MARIA figure out a way to not hardcode this
+    private int friendCount = 3; //MARIA figure out a way to not hardcode this
 
     // This attribute makes the list visible in the Unity Editor
     [SerializeField] private List<Friend> friends = new List<Friend>(); // List of friends
@@ -35,7 +35,6 @@ public class ItemCollector : MonoBehaviour
    
 
     [SerializeField] private TextMeshProUGUI energyCellText;
-    [SerializeField] private TextMeshProUGUI instructionsText;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,7 +47,8 @@ public class ItemCollector : MonoBehaviour
             {
                 FindObjectOfType<AudioManager>().Play("CollectObject");
                 currentTotalEnergy += batteryValues[battery.Key];
-                Debug.Log(batteryValues[battery.Key]);
+                Debug.Log("Collected a battery with energy value of " + batteryValues[battery.Key]);
+                //(collision.gameObject).SetActive(false);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
                 isBattery = true; // Mark as battery to avoid friend check
                 break; // Exit loop once battery is found and processed
@@ -75,8 +75,7 @@ public class ItemCollector : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Not enough energy to free your friend, " + friend.friendName + ". Collect more energy!");
-                        instructionsText.text = "Not enough energy";
+                        Debug.Log("Not enough energy to get your friend, " + friend.friendName + ", home. Collect more energy!");
                     }
                 }
             }
@@ -84,8 +83,15 @@ public class ItemCollector : MonoBehaviour
 
 
         if (collision.gameObject.CompareTag("Portal")){
-           if (friendCount == 0)
+            if (friendCount == 0) {
+                Debug.Log("Hurrah! Great job, G8tor! All of your friends are home!");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.Log("All of your friends are still not home! Help them get home.");
+            }
+                
         }
     }
 
@@ -102,7 +108,7 @@ public class ItemCollector : MonoBehaviour
         // Once the friend reaches the door, deactivate or destroy the object
         Destroy(friendObject); // or use friendObject.SetActive(false);
         friendCount = friendCount - 1;
-        Debug.Log("Friends still not freed:" + friendCount);
+        Debug.Log("Friends that are still NOT home:" + friendCount);
         currentTotalEnergy = 0;
         energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }

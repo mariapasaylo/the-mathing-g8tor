@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
     private Rigidbody2D player;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
-    private Sprite[] spriteArray;
+    //private Sprite[] spriteArray; //this messes with the animations of the player
     private Animator anim;
     private float dirX;
     [SerializeField] private float moveSpeed = 7f;
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
             player.velocity = new Vector2(player.velocity.x, jumpForce);
         }
 
+        /*The following Messes up the animations of the player
         //Up and down movement
         if (player.velocity.y < 0)
         {
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
             {
                 spriteRenderer.sprite = spriteArray[1];
            }
-        }
+        }*/
        
         UpdateAnimationState();
  
