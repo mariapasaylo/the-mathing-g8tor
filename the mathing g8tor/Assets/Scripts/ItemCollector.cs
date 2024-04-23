@@ -39,6 +39,7 @@ public class ItemCollector : MonoBehaviour
            
             if (collision.gameObject.CompareTag(battery.Key))
             {
+                FindObjectOfType<AudioManager>().Play("CollectObject");
                 currentTotalEnergy = currentTotalEnergy + GlobalVariables.batteryValues[battery.Key];
                 Debug.Log(GlobalVariables.batteryValues[battery.Key]);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
