@@ -316,7 +316,6 @@ GameObject:
   - component: {fileID: 107659270}
   - component: {fileID: 107659273}
   - component: {fileID: 107659274}
-  - component: {fileID: 107659275}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -531,18 +530,6 @@ MonoBehaviour:
     friendSpriteObject: {fileID: 1640497088}
   energyCellText: {fileID: 2055029531}
   instructionsText: {fileID: 0}
---- !u!114 &107659275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107659267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19af3f6d413be3a4693884ffcb3da9b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &116998362
 GameObject:
   m_ObjectHideFlags: 0
