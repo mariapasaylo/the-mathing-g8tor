@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,9 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        GlobalVariables.friendCount = 3;
+        GlobalVariables.previousFriendCount = 3;
+
     }
 
     // Update is called once per frame
@@ -53,10 +57,26 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
             if (player.velocity.x < 0)
             {
                 spriteRenderer.sprite = spriteArray[1];
-            }
+           }
         }
-
+       
         UpdateAnimationState();
+        Relight(); //BACKLOG
+
+
+        /*BACKLOG
+         Debug.Log("MARIA friend count" + GlobalVariables.friendCount);
+        Debug.Log("MARIA previous friend count" + GlobalVariables.previousFriendCount);
+        if (GlobalVariables.previousFriendCount > GlobalVariables.friendCount)
+        {
+            Relight();
+            GlobalVariables.previousFriendCount = GlobalVariables.friendCount;
+            Debug.Log("INSIDE friend count" + GlobalVariables.friendCount);
+            Debug.Log("INSIDE friend count" + GlobalVariables.previousFriendCount);
+        }*/
+         
+
+
 
     }
 
@@ -111,6 +131,18 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         if (other.tag == "Exit")
         {
             SceneManager.LoadScene(2);
+        }
+    }
+    
+    
+    private void Relight()
+    {
+        foreach (var battery in GlobalVariables.batteryValues)
+        {
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
         }
     }
 

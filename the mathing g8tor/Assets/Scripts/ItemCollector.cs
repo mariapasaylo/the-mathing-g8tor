@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class ItemCollector : MonoBehaviour
 {
     private int currentTotalEnergy = 0;
+    private Animator animCollectible;
+    private enum energyState { off, on }
 
     //*********************************************** ADD THIS ***********************************************//
     // This attribute makes the list visible in the Unity Editor
-    [SerializeField] 
-    private List<Friend> friends = new List<Friend>(); // List of friends
+    [SerializeField] private List<Friend> friends = new List<Friend>(); // List of friends
+    //public int friendCount = 3; //BACKLOG figure out how to not hard code this value
 
     // This makes the struct visible in the Unity Editor
-    [System.Serializable] 
+    [System.Serializable]
     public class Friend
     {
         public Transform doorLocation; // Transform component indicating where the door is located
@@ -26,10 +29,14 @@ public class ItemCollector : MonoBehaviour
         public GameObject friendSpriteObject; // This will hold the reference to which friend, friend1, friend2, friend3
     }
     //*********************************************** END OF ADDITION ***********************************************//
+    
+
 
     [SerializeField] private TextMeshProUGUI energyCellText;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
+        BACKLOG make thias a serialized field
         var batteryValues = new Dictionary<string, int>() {
             {"Battery1",1 },
             {"Battery3",3 },
@@ -37,18 +44,19 @@ public class ItemCollector : MonoBehaviour
             {"Battery7",7 },
             {"Battery9",9 }
         };
-
+        */
         //*********************************************** ADD THIS ***********************************************//
         bool isBattery = false;
         //*********************************************** END OF ADDITION ***********************************************//
-
-        foreach (var battery in batteryValues) {
-
+        
+        foreach (var battery in GlobalVariables.batteryValues) {
+           
             if (collision.gameObject.CompareTag(battery.Key))
             {
-                Destroy(collision.gameObject); //MARIA instead of destroy animate to shut flame off and relight after one friend goes to portal
-                currentTotalEnergy = currentTotalEnergy + batteryValues[battery.Key];
-                Debug.Log(batteryValues[battery.Key]);
+                //Destroy(collision.gameObject); //BACKLOG instead of destroy animate to shut flame off and relight after one friend goes to portal
+                (collision.gameObject).SetActive(false); //BACKLOG THIS IS FOR RESPAWNING
+                currentTotalEnergy = currentTotalEnergy + GlobalVariables.batteryValues[battery.Key];
+                Debug.Log(GlobalVariables.batteryValues[battery.Key]);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
                 //*********************************************** ADD THIS ***********************************************//
                 isBattery = true; // Mark as battery to avoid friend check
@@ -60,29 +68,35 @@ public class ItemCollector : MonoBehaviour
         //*********************************************** ADD THIS ***********************************************//
         if (!isBattery) {
             foreach (var friend in friends)
-        {
-            if (collision.gameObject == friend.friendSpriteObject && !friend.isFreed)
             {
-                if (currentTotalEnergy == friend.requiredEnergy)
+                if (collision.gameObject == friend.friendSpriteObject && !friend.isFreed)
                 {
-                    friend.isFreed = true;
-                    StartCoroutine(MoveToDoor(friend.friendSpriteObject, friend.doorLocation.position));
-                }
+                    if (currentTotalEnergy == friend.requiredEnergy)
+                    {
+                        friend.isFreed = true;
+                        StartCoroutine(MoveToDoor(friend.friendSpriteObject, friend.doorLocation.position));
+                    }
 
-                else if (currentTotalEnergy > friend.requiredEnergy)
-                {
-                Debug.Log("Too much energy collected. All energy lost!");
-                currentTotalEnergy = 0; 
-                energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; 
-                }
-                else
-                {
-                    Debug.Log("Not enough energy to free " + friend.friendName);
+                    else if (currentTotalEnergy > friend.requiredEnergy)
+                    {
+                    Debug.Log("Too much energy collected. All energy lost!");
+                    currentTotalEnergy = 0; 
+                    energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; 
+                    }
+                    else
+                    {
+                        Debug.Log("Not enough energy to free your friend. Collect more energy!" + friend.friendName);
+                    }
                 }
             }
         }
-        }
         //*********************************************** END OF ADDITION ***********************************************//
+
+
+        if (collision.gameObject.CompareTag("Portal")){
+           if (GlobalVariables.friendCount == 0)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     IEnumerator MoveToDoor(GameObject friendObject, Vector3 doorPosition)
@@ -97,27 +111,21 @@ public class ItemCollector : MonoBehaviour
 
         // Once the friend reaches the door, deactivate or destroy the object
         Destroy(friendObject); // or use friendObject.SetActive(false);
+        GlobalVariables.previousFriendCount = GlobalVariables.friendCount;
+        GlobalVariables.friendCount = GlobalVariables.friendCount - 1;
+        Debug.Log("Friends still not freed:" + GlobalVariables.friendCount);
         currentTotalEnergy = 0;
         energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }
+
+   
+
+
 }
     
 
 /*
 
-        if (collision.gameObject.CompareTag("Battery1")) {
-            Destroy(collision.gameObject); //MARIA instead of destroy animate to shut flame off and respawn after one friend goes to portal
-            currentTotalEnergy = currentTotalEnergy + 1;
- //           Debug.Log("Batteries: " +  batteries);
-            energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
-        }
-
-        if (collision.gameObject.CompareTag("Battery3"))
-        {
-            Destroy(collision.gameObject);
-            currentTotalEnergy = currentTotalEnergy + 3;
-            energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
-        }
 
 
  
