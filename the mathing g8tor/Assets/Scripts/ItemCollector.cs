@@ -83,7 +83,7 @@ public class ItemCollector : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Portal")){
             if (friendCount == 0) {
-                Debug.Log("Hurrah! LEVEL 1 Compeleted! Go G8tors!");
+                Debug.Log("Hurrah! LEVEL 1 Compeleted! Go G8tor!");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
