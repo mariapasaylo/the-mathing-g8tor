@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        GlobalVariables.friendCount = 3;
 
     }
 

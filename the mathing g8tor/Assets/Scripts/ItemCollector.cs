@@ -9,6 +9,14 @@ using UnityEngine.SceneManagement;
 public class ItemCollector : MonoBehaviour
 {
     private int currentTotalEnergy = 0;
+    private static Dictionary<string, int> batteryValues = new Dictionary<string, int>() {
+        {"Battery1", 1},
+        {"Battery3", 3},
+        {"Battery5", 5},
+        {"Battery7", 7},
+        {"Battery9", 9}
+    }; 
+    private static int friendCount = 3; //MARIA figure out a way to not hardcode this
 
     //*********************************************** ADD THIS ***********************************************//
     // This attribute makes the list visible in the Unity Editor
@@ -35,13 +43,13 @@ public class ItemCollector : MonoBehaviour
 
         bool isBattery = false;
         
-        foreach (var battery in GlobalVariables.batteryValues) {
+        foreach (var battery in batteryValues) {
            
             if (collision.gameObject.CompareTag(battery.Key))
             {
                 FindObjectOfType<AudioManager>().Play("CollectObject");
-                currentTotalEnergy = currentTotalEnergy + GlobalVariables.batteryValues[battery.Key];
-                Debug.Log(GlobalVariables.batteryValues[battery.Key]);
+                currentTotalEnergy = currentTotalEnergy + batteryValues[battery.Key];
+                Debug.Log(batteryValues[battery.Key]);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
                 isBattery = true; // Mark as battery to avoid friend check
                 break; // Exit loop once battery is found and processed
@@ -75,7 +83,7 @@ public class ItemCollector : MonoBehaviour
 
 
         if (collision.gameObject.CompareTag("Portal")){
-           if (GlobalVariables.friendCount == 0)
+           if (friendCount == 0)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
@@ -92,8 +100,8 @@ public class ItemCollector : MonoBehaviour
 
         // Once the friend reaches the door, deactivate or destroy the object
         Destroy(friendObject); // or use friendObject.SetActive(false);
-        GlobalVariables.friendCount = GlobalVariables.friendCount - 1;
-        Debug.Log("Friends still not freed:" + GlobalVariables.friendCount);
+        friendCount = friendCount - 1;
+        Debug.Log("Friends still not freed:" + friendCount);
         currentTotalEnergy = 0;
         energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }
