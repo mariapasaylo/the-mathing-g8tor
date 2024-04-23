@@ -16,7 +16,7 @@ public class ItemCollector : MonoBehaviour
         {"Battery7", 7},
         {"Battery9", 9}
     }; 
-    private int friendCount = 3; //MARIA figure out a way to not hardcode this
+    public int friendCount = 3; //MARIA figure out a way to not hardcode this
 
     // This attribute makes the list visible in the Unity Editor
     [SerializeField] private List<Friend> friends = new List<Friend>(); // List of friends
@@ -26,7 +26,6 @@ public class ItemCollector : MonoBehaviour
     public class Friend
     {
         public Transform doorLocation; // Transform component indicating where the door is located
-
         public string friendName;
         public int requiredEnergy;
         public bool isFreed = false;
@@ -108,7 +107,7 @@ public class ItemCollector : MonoBehaviour
         // Once the friend reaches the door, deactivate or destroy the object
         Destroy(friendObject); // or use friendObject.SetActive(false);
         friendCount = friendCount - 1;
-        Debug.Log("Friends that are still NOT home:" + friendCount);
+        Debug.Log("Number of friends that still need to get home:" + friendCount);
         currentTotalEnergy = 0;
         energyCellText.text = "Energy Cell Count: " + currentTotalEnergy; // Update UI text
     }

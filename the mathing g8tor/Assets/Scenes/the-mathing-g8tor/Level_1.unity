@@ -250,11 +250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8502645758706929171, guid: 62a859b68ba167b4ab6bf9c8f7901f01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.2
+      value: 6.09
       objectReference: {fileID: 0}
     - target: {fileID: 8502645758706929171, guid: 62a859b68ba167b4ab6bf9c8f7901f01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: -6.02
       objectReference: {fileID: 0}
     - target: {fileID: 8502645758706929171, guid: 62a859b68ba167b4ab6bf9c8f7901f01, type: 3}
       propertyPath: m_LocalPosition.z
@@ -512,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba1e9b3f9734aa4f912a7372b79b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  friendCount: 3
   friends:
   - doorLocation: {fileID: 485087690}
     friendName: Chompers
@@ -1232,11 +1233,11 @@ Transform:
   m_GameObject: {fileID: 485087688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.186996, y: -5.629362, z: -4.2914176}
+  m_LocalPosition: {x: 31.470001, y: 1.5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1046000765}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &485087691
 CircleCollider2D:
@@ -1270,9 +1271,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.012701869}
+  m_Offset: {x: -0.0026147724, y: 0.0016801119}
   serializedVersion: 2
-  m_Radius: 0.56350887
+  m_Radius: 0.047064196
 --- !u!1 &554665550
 GameObject:
   m_ObjectHideFlags: 0
@@ -6106,7 +6107,6 @@ Transform:
   - {fileID: 554665552}
   - {fileID: 1104256073}
   - {fileID: 1640497090}
-  - {fileID: 485087690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104256071
@@ -7929,11 +7929,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 8dfc6b699f7f64df0a666b8051199af9, type: 2}
     - target: {fileID: 6776341627356785959, guid: 8a3a64abe66a15843b1d24e6c9ad06cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5449963
+      value: 15.96
       objectReference: {fileID: 0}
     - target: {fileID: 6776341627356785959, guid: 8a3a64abe66a15843b1d24e6c9ad06cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.097362
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6776341627356785959, guid: 8a3a64abe66a15843b1d24e6c9ad06cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7989,4 +7989,5 @@ SceneRoots:
   - {fileID: 1903212993}
   - {fileID: 32241168}
   - {fileID: 1046000765}
+  - {fileID: 485087690}
   - {fileID: 661340222}
