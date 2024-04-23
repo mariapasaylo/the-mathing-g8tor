@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D player;
     private BoxCollider2D boxCollider;
-    public SpriteRenderer spriteRenderer;
-    public Sprite[] spriteArray;
+    private SpriteRenderer spriteRenderer;
+    private Sprite[] spriteArray;
     private Animator anim;
     private float dirX;
     [SerializeField] private float moveSpeed = 7f;

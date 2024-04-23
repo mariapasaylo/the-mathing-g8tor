@@ -10,10 +10,10 @@ using System.IO;
 public class FileDataHandler
 {
     // The directory path of where we want to save the data on our computer
-   private string dataDirPath = "";
+    private string dataDirPath;
 
     // The name of the file that we want to save to
-   private string dataFileName = "";
+    private string dataFileName;
 
     // Constructor to take in the 2 varaibles above and set them
    public FileDataHandler(string dataDirPath, string dataFileName)
