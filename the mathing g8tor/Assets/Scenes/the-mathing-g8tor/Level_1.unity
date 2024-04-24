@@ -7615,8 +7615,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Help your friends get home! Collect the right number of energy cells to
-    get your friends through the portal.
+  m_text: Help your friends get home! Collect the EXACT number of energy cells to
+    get your friends  through the portal to get home.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41ea94015549923449b6596c2f5e9f78, type: 2}
   m_sharedMaterial: {fileID: 4991017412983692211, guid: 41ea94015549923449b6596c2f5e9f78, type: 2}
@@ -7679,7 +7679,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 8.992756, z: 0, w: 4.49634}
+  m_margin: {x: 0, y: 8.992756, z: 117.50464, w: 4.49634}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
