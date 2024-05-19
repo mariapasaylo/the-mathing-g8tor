@@ -47,7 +47,7 @@ public class ItemCollector : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("CollectObject");
                 currentTotalEnergy += batteryValues[battery.Key];
                 Debug.Log("Collected a battery with energy value of " + batteryValues[battery.Key]);
-                //(collision.gameObject).SetActive(false);
+                (collision.gameObject).SetActive(false);
                 energyCellText.text = "Energy Cell Count: " + currentTotalEnergy;
                 isBattery = true; // Mark as battery to avoid friend check
                 break; // Exit loop once battery is found and processed
